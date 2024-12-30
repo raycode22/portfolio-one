@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000&family=Poppins:ital,wght@0,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  --pico-font-family: "Poppins", sans-serif;
+  vertical-align: baseline;
+}
+
+body[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --link-color: #0172ad;
+  --nav-background-color: #ffffff;
+}
+
+body[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --link-color: #bb86fc;
+  --nav-background-color: #121212;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+header {
+  position: sticky;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul .left,
+nav ul .right {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 1em;
+}
+
+nav ul li a {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+nav ul li a p {
+  margin-left: 0.5em;
+  display: inline;
+}
+
+button {
+  display: inline;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-toggle {
+  display: flex;
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 450px) {
+  .burger-menu {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--pico-background-color);
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul .left,
+  nav ul .right {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 0;
+    padding: 1em;
+  }
+
+  nav ul li:last-child {
+    border-bottom: none;
+  }
+}
+
+h4 {
+  text-align: center;
+}
+
+img {
+  width: 100%; /* Adjust width */
+  height: auto; /* Adjust height */
+}
+
+a {
+  --pico-font-color: #02659a;
+  text-decoration: none;
+}
+a:hover {
+  background-color: #029ae8;
+}
+.custom-article h5 {
+  font-size: 1rem; /* Adjust font size */
+  margin: 0.4em 0;
+}
+.hdr-btn-align {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.4em 0 0 0;
+}
+.button-container {
+  display: flex; /* Use Flexbox for the button container */
+  gap: 12px; /* Add space between buttons */
+}
+
+.custom-article p {
+  font-size: 0.875rem; /* Adjust font size */
+  margin: 0.8em 0 1.2em 0;
+  flex: 1;
+}
+
+.custom-article .preview,
+.custom-article .outline {
+  display: flex; /* Display buttons as flex items */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  height: 1.8em;
+  width: 2em; /* Adjust width as needed */
+  padding: 10px 16px; /* Adjust padding as needed */
+  text-align: center;
+  vertical-align: middle;
+}
