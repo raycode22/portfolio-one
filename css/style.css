@@ -1,189 +1,377 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000&family=Poppins:ital,wght@0,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  --pico-font-family: "Poppins", sans-serif;
-  vertical-align: baseline;
-}
-
-body[data-theme="light"] {
-  --background-color: #ffffff;
-  --text-color: #000000;
-  --link-color: #0172ad;
-  --nav-background-color: #ffffff;
-}
-
-body[data-theme="dark"] {
-  --background-color: #121212;
-  --text-color: #ffffff;
-  --link-color: #bb86fc;
-  --nav-background-color: #121212;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    transition: all 120ms ease;
 }
 
 body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-a {
-  color: var(--link-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 header {
-  position: sticky;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    height: 3rem;
+    background-color: var(--pico-background-color);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-}
-
-.burger-menu {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+    width: 100%;
+    display: flex;
+    gap: 4em;
+    margin: 0 0 0 6rem;
+    overflow: hidden;
 }
 
 nav ul {
-  display: flex;
-  list-style: none;
-  margin-left: auto;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav ul .left,
-nav ul .right {
-  display: flex;
-  justify-items: center;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    width: 100%;
 }
 
 nav ul li {
-  display: inline;
-  margin: 0 1em;
+    display: flex;
 }
 
 nav ul li a {
-  display: flex;
-  align-items: center;
-  text-align: center;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--link-color);
+    transition: color 0.3s ease;
 }
 
-nav ul li a p {
-  margin-left: 0.5em;
-  display: inline;
+nav ul li a:hover {
+    color: #029ae8;
+    transform: scale(1.08);
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
-button {
-  display: inline;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+nav ul li a lord-icon {
+    margin-right: 0.5em; /* Space between icon and text */
+    transition: margin-right 0.3s ease;
 }
 
-.nav-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+nav ul li a span {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
 }
 
-.theme-toggle {
-  display: flex;
-  width: 50px;
-  height: 50px;
+.nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1em;
 }
 
-@media (max-width: 450px) {
-  .burger-menu {
-    display: block;
-  }
-
-  nav ul {
+.burger-menu {
     display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--pico-background-color);
+    cursor: pointer;
+}
+
+#branding {
+    display: flex;
+    align-items: center;
     padding: 0;
     margin: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  nav ul.show {
-    display: flex;
-  }
-
-  nav ul .left,
-  nav ul .right {
-    flex-direction: column;
-  }
-
-  nav ul li {
-    margin: 0;
-    padding: 1em;
-  }
-
-  nav ul li:last-child {
-    border-bottom: none;
-  }
+    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.1));
 }
 
-h4 {
-  text-align: center;
+.brand-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 9em;
+    height: 9sem;
+}
+
+.brand-logo span {
+    background: linear-gradient(180deg, #029ae8, #b7d9fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    font-size: x-large;
+    margin-left: -68%;
+}
+
+.nav-right .outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 3.2rem;
+    width: 6em;
+    height: 2em;
+}
+
+.nav-right .theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 2em;
+    height: 2em;
+}
+
+.nav-right span {
+    padding-left: 8px;
+}
+
+.hero-img {
+    width: 100%;
+    height: calc(100vh - 3rem);
+    filter: contrast(92%) grayscale(20%) invert(1%) brightness(80%)
+        saturate(300%);
+}
+
+#backgroundImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+main {
+    overflow: hidden;
 }
 
 img {
-  width: 100%; /* Adjust width */
-  height: auto; /* Adjust height */
+    width: 100%;
+    height: auto;
 }
 
-a {
-  --pico-font-color: #02659a;
-  text-decoration: none;
+h4 {
+    text-align: center;
 }
-a:hover {
-  background-color: #029ae8;
-}
+
 .custom-article h5 {
-  font-size: 1rem; /* Adjust font size */
-  margin: 0.4em 0;
-}
-.hdr-btn-align {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.4em 0 0 0;
-}
-.button-container {
-  display: flex; /* Use Flexbox for the button container */
-  gap: 12px; /* Add space between buttons */
+    font-size: 1rem;
+    margin: 0.4em 0;
 }
 
 .custom-article p {
-  font-size: 0.875rem; /* Adjust font size */
-  margin: 0.8em 0 1.2em 0;
-  flex: 1;
+    font-size: 0.875rem;
+    margin: 0.8em 0 1.2em 0;
 }
 
 .custom-article .preview,
 .custom-article .outline {
-  display: flex; /* Display buttons as flex items */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
-  height: 1.8em;
-  width: 2em; /* Adjust width as needed */
-  padding: 10px 16px; /* Adjust padding as needed */
-  text-align: center;
-  vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.8em;
+    width: 2em;
+    padding: 10px 16px;
+    text-align: center;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 10s ease-out, transform 10s ease-out;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hdr-btn-align {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.4em 0;
+}
+
+.button-container {
+    display: flex;
+    gap: 12px;
+}
+
+.dialog-header {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 60%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+#closeDialog {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 0;
+        margin: 0;
+    }
+
+    #branding {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .brand-logo {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .brand-logo span {
+        display: none;
+    }
+
+    #burger-menu {
+        display: flex;
+        color: var(--text-color);
+        border: 1px;
+        border-style: solid;
+        border-color: var(--text-color);
+        border-radius: 4px;
+        cursor: pointer;
+        background: none;
+        padding: 0.5rem;
+        width: 2em;
+        height: 2em;
+        z-index: 1001;
+    }
+
+    nav {
+        position: relative;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        margin-top: -20px;
+        left: 2%;
+        width: 100%;
+        background-color: var(--pico-background-color);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: top 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        padding: 1rem 0;
+    }
+
+    nav ul.show {
+        top: 4rem;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul li {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 24%;
+        border-bottom: 1px solid #029ae8;
+        border-radius: 2px;
+    }
+
+    nav ul li:last-child {
+        border-bottom: none;
+        margin-bottom: 20px;
+    }
+
+    .nav-right {
+        position: absolute;
+        gap: 1.6rem;
+        right: 0.7rem;
+        top: -1rem;
+    }
+
+    .nav-right .outline,
+    .nav-right .theme-toggle {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        width: 2em;
+        height: 2em;
+        margin-right: -12px;
+    }
+    .hero-img {
+        width: 100%;
+        height: 100vh;
+    }
+
+    #backgroundImg {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        object-position: 32%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container-fluid {
+        color: var(--text-color);
+        display: flex;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        overflow: visible;
+        margin-left: -2.4em;
+    }
+    nav ul li {
+        font-size: 0.72em;
+    }
+    .brand-logo {
+        margin-left: 0.2em;
+    }
+
+    .brand-logo span {
+        display: none;
+    }
+
+    .nav-right .outline {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        width: 2em;
+        height: 2em;
+        margin-right: -12px;
+    }
+
+    .nav-right span {
+        display: none;
+    }
 }
