@@ -193,3 +193,87 @@ function smoothScrollTo(targetPosition, duration) {
 }
 
 //TYPED.JS
+
+//RANDOM WORDS ANIMATION
+const wordContainer = document.getElementById("word-container");
+const color = document.getElementById("color");
+const opacity = document.getElementById("opacity");
+
+const words = [
+    "Visual Design",
+    "User Interface Design",
+    "User Experience Design",
+    "Interaction Design",
+    "Prototyping",
+    "Wireframing",
+    "Typography",
+    "Color Theory",
+    "Layout Design",
+    "Branding",
+    "Creative Direction",
+    "Information Architecture",
+    "Responsive Design",
+    "Mobile Design",
+    "Web Design",
+    "Print Design",
+    "Illustration",
+    "Animation",
+    "Usability Testing",
+    "User Research",
+    "Wireframe Creation",
+    "Design Thinking",
+    "Mockups",
+    "User Flow Design",
+    "A/B Testing",
+    "Storyboarding",
+    "Moodboarding",
+    "Content Strategy",
+    "Design Systems",
+    "Motion Design",
+    "Interface Animation",
+    "Usability Optimization",
+    "User-Centered Design",
+    "Accessibility Design",
+    "Cross-Functional Collaboration",
+    "Creative Problem Solving",
+    "Attention to Detail",
+    "Visual Storytelling",
+    "Collaboration with Developers",
+    "Project Management",
+];
+
+function getRandomPosition() {
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    return { x, y };
+}
+
+function createWord() {
+    const word = document.createElement("div");
+    word.className = "word";
+    word.textContent = words[Math.floor(Math.random() * words.length)];
+    const position = getRandomPosition();
+    word.style.left = `${position.x}px`;
+    word.style.top = `${position.y}px`;
+    word.style.color = color.value;
+    word.style.opacity = opacity.value;
+    wordContainer.appendChild(word);
+
+    setTimeout(() => {
+        word.remove();
+    }, 10200);
+}
+
+setInterval(createWord, 800);
+
+color.addEventListener("input", () => {
+    document.querySelectorAll(".word").forEach((word) => {
+        word.style.color = color.value;
+    });
+});
+
+opacity.addEventListener("input", () => {
+    document.querySelectorAll(".word").forEach((word) => {
+        word.style.opacity = opacity.value;
+    });
+});
