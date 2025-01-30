@@ -1,27 +1,19 @@
-//FOR MODALS
+// FOR MODALS
 document.addEventListener("DOMContentLoaded", (event) => {
-    // Get the dialog
     const dialog = document.getElementById("preview");
-
-    // Get the close button inside the dialog
     const closeDialogButton = document.getElementById("closeDialog");
-
-    // Get all elements with class "cards"
     const cards = document.querySelectorAll(".preview");
 
-    // When the user clicks on a card, open the dialog
     cards.forEach((card) => {
         card.onclick = function () {
             dialog.showModal();
         };
     });
 
-    // When the user clicks on the close button, close the dialog
     closeDialogButton.onclick = function () {
         dialog.close();
     };
 
-    // When the user clicks outside the dialog, close it
     dialog.addEventListener("click", (event) => {
         if (event.target === dialog) {
             dialog.close();
@@ -52,10 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // SET THEME SYSTEM PREFERENCE
     setThemeBasedOnSystemPreference();
 
-    // CHANGE THEME
     window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", setThemeBasedOnSystemPreference);
@@ -81,33 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-//VIEW TRANSITION API
-document.addEventListener("DOMContentLoaded", () => {
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    navLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
-            event.preventDefault();
-            const targetId = link.getAttribute("href").substring(1);
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                document.startViewTransition(() => {
-                    document.querySelectorAll("section").forEach((section) => {
-                        section.classList.add("hidden");
-                    });
-                    targetElement.classList.remove("hidden");
-                    window.scrollTo({
-                        top: targetElement.offsetTop,
-                        behavior: "smooth",
-                    });
-                });
-            }
-        });
-    });
-});
-
-//TRANSITIONS
+// TRANSITIONS
 document.addEventListener("DOMContentLoaded", () => {
     const articles = document.querySelectorAll(".custom-article");
 
@@ -122,35 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         },
         {
-            threshold: 0.2,
+            threshold: 0.6,
         }
     );
 
     articles.forEach((article) => {
         observer.observe(article);
-    });
-});
-
-//OWL CAROUSEL
-$(document).ready(function () {
-    $(".owl-carousel").owlCarousel({
-        loop: true,
-        autoplay: true,
-        fluidSpeed: true,
-        animateOut: "fadeOut",
-        autoplayHoverPause: true,
-        margin: 100,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            600: {
-                items: 2,
-            },
-            1000: {
-                items: 3,
-            },
-        },
     });
 });
 
@@ -164,82 +105,37 @@ navLinks.forEach((link) => {
         const targetElement = document.getElementById(targetId);
 
         if (targetElement) {
-            smoothScrollTo(targetElement.offsetTop, 1600); // Adjust duration (in ms) as needed
+            targetElement.scrollIntoView({ behavior: "smooth" });
         }
     });
 });
 
-function smoothScrollTo(targetPosition, duration) {
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-
-    function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-
-    function ease(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return (c / 2) * t * t + b;
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animation);
-}
-
-//TYPED.JS
-
-//RANDOM WORDS ANIMATION
+// RANDOM WORDS ANIMATION
 const wordContainer = document.getElementById("word-container");
 const color = document.getElementById("color");
 const opacity = document.getElementById("opacity");
 
 const words = [
-    "Visual Design",
-    "User Interface Design",
-    "User Experience Design",
-    "Interaction Design",
-    "Prototyping",
-    "Wireframing",
+    "Minimalism",
     "Typography",
     "Color Theory",
-    "Layout Design",
-    "Branding",
-    "Creative Direction",
-    "Information Architecture",
-    "Responsive Design",
-    "Mobile Design",
-    "Web Design",
-    "Print Design",
-    "Illustration",
-    "Animation",
-    "Usability Testing",
-    "User Research",
-    "Wireframe Creation",
-    "Design Thinking",
-    "Mockups",
-    "User Flow Design",
-    "A/B Testing",
-    "Storyboarding",
-    "Moodboarding",
-    "Content Strategy",
-    "Design Systems",
-    "Motion Design",
-    "Interface Animation",
-    "Usability Optimization",
-    "User-Centered Design",
-    "Accessibility Design",
-    "Cross-Functional Collaboration",
-    "Creative Problem Solving",
-    "Attention to Detail",
-    "Visual Storytelling",
-    "Collaboration with Developers",
-    "Project Management",
+    "Visual Hierarchy",
+    "White Space",
+    "Grid Systems",
+    "Balance",
+    "Contrast",
+    "Harmony",
+    "Proportion",
+    "Scale",
+    "Symmetry",
+    "Asymmetry",
+    "Alignment",
+    "Repetition",
+    "Rhythm",
+    "Emphasis",
+    "Movement",
+    "Pattern",
+    "Texture",
 ];
 
 function getRandomPosition() {
@@ -261,7 +157,7 @@ function createWord() {
 
     setTimeout(() => {
         word.remove();
-    }, 10200);
+    }, 10200); // Adjust duration to match the animation duration
 }
 
 setInterval(createWord, 800);
@@ -276,4 +172,20 @@ opacity.addEventListener("input", () => {
     document.querySelectorAll(".word").forEach((word) => {
         word.style.opacity = opacity.value;
     });
+});
+
+//TYPEWRITER EFFECT
+var typedRest = new Typed(".hero-work", {
+    strings: [
+        "Hello! I'm,<br> <span class='highlight'>Ray Enriquez</span><br>I'm a<span class='highlight2'> Freelancer</span>",
+        "Hello! I'm,<br> <span class='highlight'>Ray Enriquez</span><br>I'm a<span class='highlight2'> Designer</span>",
+    ],
+    startDelay: 500,
+    typeSpeed: 75,
+    backDelay: 5000,
+    backSpeed: 100,
+    smartBackspace: true,
+    showCursor: true,
+    cursorChar: "|",
+    loop: true,
 });
