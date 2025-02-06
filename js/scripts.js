@@ -189,3 +189,10 @@ var typedRest = new Typed(".hero-work", {
     cursorChar: "|",
     loop: true,
 });
+
+// reCAPTCHA
+    grecaptcha.ready(function() {
+      grecaptcha.execute('6LfSdcgqAAAAACgjdQ0CwVrXDD5qPV7VPFFFYW5G', {action: 'submit'}).then(function(token) {
+        document.getElementById('recaptchaResponse').value = token;
+      });
+    });

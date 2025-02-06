@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+  $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+?>
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
@@ -6,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light dark" />
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preload" href="./assets/images/backgroundImg00.jpg" as="image">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
@@ -93,6 +100,7 @@
         <span id="color" value="#029ae8"></span>
         <span id="opacity"></span>
       </div>
+    </div>
   </section>
   <main class="container">
     <section id="about">
@@ -116,7 +124,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -136,7 +144,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -156,7 +164,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -181,7 +189,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -201,7 +209,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -221,7 +229,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -246,7 +254,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -266,7 +274,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -286,7 +294,7 @@
                     <i class="fa-solid fa-eye fa-xs"></i>
                   </button>
                   <button class="outline" data-tooltip="View on Penpot" data-placement="bottom">
-                    <i class="fa-solid fa-link fa-xs"></i><a href="#"></a>
+                    <i class="fa-solid fa-link fa-xs"></i>
                   </button>
                 </div>
               </div>
@@ -312,19 +320,32 @@
 
     <section id="contact">
       <h3>Contact Me</h3>
-      <form action="send_email.php" method="POST"></form>>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
+      <div class="contact-wrapper">
+        <form action="send_email.php" method="POST" class="contact-form">
+          <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'], ENT_QUOTES) ?>">
+          <script src="https://www.google.com/recaptcha/api.js?render=6LfSdcgqAAAAACgjdQ0CwVrXDD5qPV7VPFFFYW5G"></script>
+          <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required class="form-control">
+          </div>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required class="form-control">
+          </div>
 
-      <button type="submit">Send</button>
-      </form>
+          <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required class="form-control"></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
     </section>
+
     <footer>
       <p>&copy; Raysthetics 2024</p>
       <p>Made with <i class="fa-solid fa-heart" style="color: #029ae8;"></i> using
@@ -351,7 +372,7 @@
     </article>
   </dialog>
 
-  <script src="https://cdnjs .cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>

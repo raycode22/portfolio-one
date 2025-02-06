@@ -97,6 +97,7 @@ nav ul li a span {
     align-items: center;
     width: 9em;
     height: 9sem;
+    z-index: -1;
 }
 
 .brand-logo span {
