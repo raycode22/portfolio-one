@@ -84,7 +84,7 @@ if (empty($_SESSION['csrf_token'])) {
       </div>
     </nav>
   </header>
-  <section id="hero" class="hero-img">
+  <section id="hero" class="hero-img active">
     <div class="hero-container">
       <h1><span class="hero-work"></span></h1>
     </div>
@@ -103,11 +103,11 @@ if (empty($_SESSION['csrf_token'])) {
     </div>
   </section>
   <main class="container">
-    <section id="about">
+    <section id="about" class="target-section">
       <h1></h1>
       <h2>My Portfolio</h2>
     </section>
-    <section id="portfolio">
+    <section id="portfolio" class="target-section">
       <h3>My Work</h3>
       <section id="apps">
         <h4>
@@ -308,7 +308,7 @@ if (empty($_SESSION['csrf_token'])) {
       </section>
     </section>
 
-    <section id="experience">
+    <section id="experience" class="target-section">
       <h3>Experience</h3>
       <div>
         <ul>
@@ -318,7 +318,7 @@ if (empty($_SESSION['csrf_token'])) {
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="target-section">
       <h3>Contact Me</h3>
       <div class="contact-wrapper">
         <form action="send_email.php" method="POST" class="contact-form">

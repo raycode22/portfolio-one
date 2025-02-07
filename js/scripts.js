@@ -196,3 +196,32 @@ var typedRest = new Typed(".hero-work", {
         document.getElementById('recaptchaResponse').value = token;
       });
     });
+
+// TARGET SECTION
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const targetSections = document.querySelectorAll('.target-section'); // Change this to your target sections' selector
+
+    // Function to add active class
+    function addActiveClass(link) {
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        link.classList.add('active');
+    }
+
+    // Add event listener for click
+    targetSections.forEach((section, index) => {
+        section.addEventListener('click', function() {
+            addActiveClass(navLinks[index]);
+        });
+    });
+
+    // Add event listener for scroll
+    window.addEventListener('scroll', function() {
+        targetSections.forEach((section, index) => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop <= window.innerHeight && sectionTop >= 0) {
+                addActiveClass(navLinks[index]);
+            }
+        });
+    });
+});
