@@ -94,21 +94,28 @@ nav ul li a span {
 
 .brand-logo {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    width: 9em;
-    height: 9sem;
+    width: 12rem;
+    padding: 0;
+    margin: 0;
     z-index: -1;
 }
 
 .brand-logo span {
     background: linear-gradient(180deg, #029ae8, #b7d9fc);
-    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     font-weight: 600;
-    font-size: x-large;
-    margin-left: -68%;
+    font-size: 1.2rem;
+    padding: 0;
+    margin-left: -66%;
+    z-index: 1000;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .brand-logo span {
+        margin-left: -74%;
+    }
 }
 
 .nav-right .outline {
