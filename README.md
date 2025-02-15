@@ -1,8 +1,4 @@
-# portfolio-one
-
 # Raysthetics Portfolio
-
-![Preview](./assets/images/backgroundImg00.jpg)
 
 A modern and responsive portfolio website showcasing design work, projects, and professional experience. Built with performance and aesthetics in mind.
 
@@ -26,10 +22,3 @@ A modern and responsive portfolio website showcasing design work, projects, and 
 -   [Lordicon](https://lordicon.com/) - Animated icons
 -   [Typed.js](https://mattboldt.com/demos/typed-js/) - Typewriter effect
 -   [Owl Carousel](https://owlcarousel2.github.io/OwlCarousel2/) - Content slider (standby implementation)
-
-## 🚀 Installation
-
-1. Clone repository:
-    ```bash
-    git clone https://github.com/yourusername/raysthetics-portfolio.git
-    ```
