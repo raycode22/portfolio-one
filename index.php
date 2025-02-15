@@ -17,7 +17,10 @@ include 'include/head.inc.php';
   <!-- main -->
   <main class="container">
     <section id="about" class="target-section">
-      <h1>My Portfolio</h1>
+      <h1>About</h1>
+      <p>Hello! I'm an entry-level designer with a passion for merging technology and creativity to build intuitive, user-friendly solutions across web, mobile, and desktop platforms. I thrive on learning new techniques and collaborating with other creative minds to bring innovative projects to life.</p>
+      <p>Every design challenge is an opportunity to explore fresh ideas, refine my skills, and craft experiences that truly resonate with users. Thank you for stopping by my portfolio—I look forward to connecting and creating something exceptional together.</p>
+      <img src="/assets/images/astronaut_flying.svg" alt="">
     </section>
     <section id="portfolio" class="target-section">
       <h3>My Work</h3>

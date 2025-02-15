@@ -19,9 +19,13 @@
        </li>
        <li>
          <a href="#about">
-           <lord-icon src="https://cdn.lordicon.com/daeumrty.json" trigger="hover"
-             colors="primary:#ffffff,secondary:#ffffff,tertiary:#029ae8,quaternary:#029ae8"
-             style="width: 32px; height: 32px"></lord-icon>
+           <script src="https://cdn.lordicon.com/lordicon.js"></script>
+           <lord-icon
+             src="https://cdn.lordicon.com/pvibmvxz.json"
+             trigger="hover"
+             colors="primary:#029ae8,secondary:#029ae8,tertiary:#ffffff,quaternary:#029ae8,quinary:#e87402"
+             style="width:32px;height:32px">
+           </lord-icon>
            <span>About</span>
          </a>
        </li>
