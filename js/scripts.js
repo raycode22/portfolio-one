@@ -215,3 +215,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// reCAPTCHA
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LfSdcgqAAAAACgjdQ0CwVrXDD5qPV7VPFFFYW5G', {action: 'contact'})
+                .then(function(token) {
+                    document.getElementById('recaptchaResponse').value = token;
+                    contactForm.submit();
+                });
+        });
+    });
+});
+
+// DOMPurify
+ document.getElementById('contactForm').addEventListener('submit', function(event) {
+    // Sanitize form inputs
+    var name = DOMPurify.sanitize(document.getElementById('name').value);
+    var email = DOMPurify.sanitize(document.getElementById('email').value);
+    var message = DOMPurify.sanitize(document.getElementById('message').value);
+
+    // Update form inputs with sanitized values
+    document.getElementById('name').value = name;
+    document.getElementById('email').value = email;
+    document.getElementById('message').value = message;
+  });

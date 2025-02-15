@@ -3,8 +3,10 @@
      <i class="fa-solid fa-bars" id="menu-icon"></i>
    </button>
    <div class="brand-logo">
-     <img src="./assets/brand/raysthetics-brand-2.svg" alt="raysthetics-brand" id="branding" />
-     <span>Raysthetics</span>
+     <a href="#" onclick="location.reload(); return false;">
+       <img src="./assets/brand/raysthetics-brand-2.svg" alt="raysthetics-brand" id="branding" />
+       <span>Raysthetics</span>
+     </a>
    </div>
    <nav>
      <ul>
@@ -48,9 +50,11 @@
        </li>
      </ul>
      <div class="nav-right">
-       <button class="outline" data-tooltip="Download Resume" data-placement="bottom" aria-label="Download Resume">
-         <i class="fa-solid fa-download"></i><span>Resume</span>
-       </button>
+       <form action="resume.php" class="resume">
+         <button class="outline" data-tooltip="Download Resume" data-placement="bottom" aria-label="Download Resume">
+           <i class="fa-solid fa-download"></i><span>Resume</span>
+         </button>
+       </form>
        <button class="theme-toggle">
          <i class="fa-solid fa-moon" id="theme-icon"></i>
        </button>
