@@ -72,9 +72,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // TRANSITIONS
+// TRANSITIONS
 document.addEventListener("DOMContentLoaded", () => {
     const articles = document.querySelectorAll(".custom-article");
-
+    const sections = document.querySelectorAll(".sec-divider");
+    const texts = document.querySelectorAll("h1, p");
+    
     const observer = new IntersectionObserver(
         (entries, observer) => {
             entries.forEach((entry) => {
@@ -92,6 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     articles.forEach((article) => {
         observer.observe(article);
+    });
+
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
+
+    texts.forEach((text) => {
+        text.classList.add("fade-in-up");
     });
 });
 
@@ -188,30 +199,4 @@ var typedRest = new Typed(".hero-work", {
     showCursor: true,
     cursorChar: "|",
     loop: true,
-});
-
-// TARGET SECTION
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const targetSections = document.querySelectorAll('.target-section');
-
-    function addActiveClass(link) {
-        navLinks.forEach(navLink => navLink.classList.remove('active'));
-        link.classList.add('active');
-    }
-
-    targetSections.forEach((section, index) => {
-        section.addEventListener('click', function() {
-            addActiveClass(navLinks[index]);
-        });
-    });
-
-    window.addEventListener('scroll', function() {
-        targetSections.forEach((section, index) => {
-            const sectionTop = section.getBoundingClientRect().top;
-            if (sectionTop <= window.innerHeight && sectionTop >= 0) {
-                addActiveClass(navLinks[index]);
-            }
-        });
-    });
 });
