@@ -72,6 +72,21 @@ nav ul li a span {
     transition: all 0.3s ease;
 }
 
+nav ul li a.active {
+    color: #029ae8 !important;
+    transform: scale(1.08);
+}
+
+nav ul li a.active lord-icon {
+    filter: brightness(1.2);
+}
+
+/* Keep existing hover styles */
+nav ul li a:hover:not(.active) {
+    color: #029ae8 !important;
+    transform: scale(1.08);
+}
+
 .nav-right {
     display: flex;
     align-items: center;
@@ -273,7 +288,6 @@ nav ul li a span {
     color: #fff;
     opacity: 0.5;
 }
-
 .scroll-down p {
     color: #fff;
     opacity: 0.5;
@@ -308,32 +322,60 @@ main {
     overflow: hidden;
 }
 
+.sec-divider h1 {
+    margin-top: 1rem;
+}
+
 #about,
-#experience{
+#experience {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: justify;
     height: 100vh;
     width: 100%;
+    margin: 0;
     padding: 12rem;
-    gap: 2rem;
+    line-height: 2.2rem;
+    z-index: 1000;
 }
+
 #portfolio{
     display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 #contact{
     padding-bottom: 6rem;
 }
+
 #contact > h1{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 img {
     width: 100%;
     height: auto;
@@ -343,15 +385,20 @@ h4 {
     text-align: center;
 }
 
-.custom-article, .sec-divider{
+.custom-article,
+.sec-divider{
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: opacity 1s ease-out, transform 0.8s ease-out;
+    position: relative;
+    z-index: 1;
 }
 
-.custom-article.visible, .sec-divider.visible {
-    opacity: 1;
-    transform: translateY(0);
+.custom-article.visible,
+.sec-divider.visible
+{
+    opacity: 1 !important;;
+    transform: translateY(0) !important;;
 }
 
 .custom-article h5 {
@@ -440,13 +487,33 @@ footer p {
 
 /* MODAL */
 @media (max-width: 770px) {
+
+    html {
+        overflow-x: hidden;
+    }
+
     .container-fluid {
         padding: 0;
         margin: 0;
     }
 
     #branding {
-        justify-content: center;
+    .brand-logo span {
+        display: none;
+    }
+
+    #burger-menu {
+        display: flex;
+        color: var(--text-color);
+        border: 1px solid var(--text-color);
+        border-radius: 4px;
+        cursor: pointer;
+        background: none;
+        padding: 0.5rem;
+        width: 2em;
+        height: 2em;
+        z-index: 1001;
+    }       justify-content: center;
     }
 
     .brand-logo {
@@ -544,6 +611,14 @@ footer p {
         font-size: 4.2em;
         font-weight: 700;
         text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    #about,
+    #experience {
+        text-align: justify;
+        margin: 0;
+        padding: 2rem;
+        line-height: 1.8rem;
     }
 }
 

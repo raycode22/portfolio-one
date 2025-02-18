@@ -20,9 +20,11 @@ include 'include/hero.inc.php';
       <p>Hello! I'm an entry-level designer with a passion for merging technology and creativity to build intuitive, user-friendly solutions across web, mobile, and desktop platforms. I thrive on learning new techniques and collaborating with other creative minds to bring innovative projects to life.</p>
       <p>Every design challenge is an opportunity to explore fresh ideas, refine my skills, and craft experiences that truly resonate with users. Thank you for stopping by my portfolio—I look forward to connecting and creating something exceptional together.</p>
     </section>
+
   </div>
   <div class="sec-divider">
     <section id="portfolio">
+      <h1>Portfolio</h1>
       <?php
       include 'include/portfolio.inc.php'
       ?>
@@ -38,7 +40,7 @@ include 'include/hero.inc.php';
   </div>
   <div class="sec-divider">
     <section id="contact">
-      <h1>Contact Me</h1>
+      <h1>Contact</h1>
       <?php
       include 'include/contact.inc.php';
       ?>

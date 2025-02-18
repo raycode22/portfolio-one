@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // TRANSITIONS
-// TRANSITIONS
 document.addEventListener("DOMContentLoaded", () => {
     const articles = document.querySelectorAll(".custom-article");
     const sections = document.querySelectorAll(".sec-divider");
@@ -89,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         },
         {
-            threshold: 0.6,
+            threshold: 0.2,
         }
     );
 
@@ -168,7 +167,7 @@ function createWord() {
 
     setTimeout(() => {
         word.remove();
-    }, 10200); // Adjust duration to match the animation duration
+    }, 10200);
 }
 
 setInterval(createWord, 800);
@@ -199,4 +198,67 @@ var typedRest = new Typed(".hero-work", {
     showCursor: true,
     cursorChar: "|",
     loop: true,
+});
+
+//NAVIGATION HIGHLIGHT
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section, #hero"); // Include hero section
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    // Add 'active' class to Home link initially
+    const homeLink = document.querySelector('a[href="#hero"]');
+    homeLink.classList.add('active');
+
+    const sectionObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        },
+        { threshold: 0.5 }
+    );
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Click handler with smooth scroll
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            const target = document.querySelector(href);
+            
+            if (target) {
+                e.preventDefault();
+                // Remove all active classes
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Add active to clicked link
+                link.classList.add('active');
+                
+                // Smooth scroll
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // Update URL hash
+                history.pushState(null, null, href);
+            }
+        });
+    });
+
+    // Handle initial hash in URL
+    if (window.location.hash) {
+        const initialLink = document.querySelector(`a[href="${window.location.hash}"]`);
+        if (initialLink) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            initialLink.classList.add('active');
+        }
+    }
 });
